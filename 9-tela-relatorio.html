@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            background: url('');
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        canvas {
+            max-width: 100%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Relatórios</h1>
+    </div>
+    <div class="container">
+        <h2>Consumo de Calorias</h2>
+        <canvas id="caloriesChart"></canvas>
+
+        <h2>Atividades Realizadas</h2>
+        <canvas id="activitiesChart"></canvas>
+
+        <h2>Progresso Semanal</h2>
+        <canvas id="weeklyProgressChart"></canvas>
+    </div>
+
+    <!-- Incluindo o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Gráfico de Consumo de Calorias
+        const ctx1 = document.getElementById('caloriesChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [{
+                    label: 'Calorias Consumidas',
+                    data: [2000, 1800, 2200, 2100, 1900, 2500, 2300],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Atividades Realizadas
+        const ctx2 = document.getElementById('activitiesChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Corrida', 'Ciclismo', 'Yoga', 'Natação', 'Dança'],
+                datasets: [{
+                    label: 'Atividades Realizadas',
+                    data: [5, 3, 2, 4, 1],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Progresso Semanal
+        const ctx3 = document.getElementById('weeklyProgressChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completo', 'Pendente'],
+                datasets: [{
+                    label: 'Progresso',
+                    data: [70, 30],
+                    backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
